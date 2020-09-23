@@ -1,0 +1,32 @@
+<div>
+    <input type="text" [(ngModel)]="name" data-inline="true" (input)=Search() placeholder="Search for names..">
+</div>
+<br>
+<div id="outer">
+    <div class="inner">
+        <button type="button" style="margin:5px;" data-inline="true" (click)="distinctDepartment()"
+            class="btn btn-info">Get Distinct Department</button>
+    </div>
+    <div class="inner">
+        <button type="button" style="margin:5px;" (click)="buttonClick()" class="btn btn-info">Display Employee
+            List</button>
+    </div>
+    <div class="inner"><button type="button" style="margin:5px;" (click)="removeCandidate()" data-inline="true"
+            class="btn btn-danger">Remove Candidates from Development
+            Department</button>
+    </div>
+</div>
+<div class="jumbotron">
+    <table class="table table-striped" id="myTable" style="width:100%">
+        <tr>
+            <th *ngFor="let col of columns"><a class="link" (click)="sortedColumn = col"> {{col}} </a>
+            </th>
+        </tr>
+        <tr *ngFor="let candidate of (candidates | sort : sortedColumn)">
+            <td>{{candidate.id}}</td>
+            <td>{{candidate.name}}</td>
+            <td>{{candidate.department}}</td>
+            <td>{{candidate.joining_date}}</td>
+        </tr>
+    </table>
+</div>
